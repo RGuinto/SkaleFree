@@ -1,0 +1,376 @@
+@import "bootstrap";
+
+/* mixins, variables, etc. */
+
+$grayMediumLight: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+ul {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+.cfont {
+  color: white;
+}
+
+.sborder {
+  padding: 15px;
+  background-color: $grayLight;
+  border: 3px solid #FAFAFA;
+  border-radius:25px;
+}
+
+.bbackground {
+  background-color: #1C1C1C;
+}
+
+.pHeadings {
+  text-align: center;
+  color: white;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $grayMediumLight;
+  color: $grayLight;
+  a {
+    color: $grayLight;
+    &:hover { 
+      color: white;
+    }
+  }  
+  small { 
+    float: left; 
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+
+/* sidebar */
+
+aside {
+  section {
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+  }
+}
+
+.home {
+  text-align:center;
+  color:white;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+}
+
+/* users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
+
+/* profile */
+
+#traits {
+  word-wrap: break-word;
+}
+
+#about {
+  word-wrap: break-word;
+}
+
+.pedit {
+  padding:15px 50px;
+  background-color:$grayLight;
+  border:3px solid white;
+  border-radius:25px;
+}
+
+.spages {
+  padding:15px 50px;
+  background-color:white;
+  border:3px solid white;
+  border-radius:25px;
+}
+
+/* wallposts */
+
+.wall_post {
+  width: 530px;
+  height: 100px;
+  word-wrap:break-word;
+  overflow: auto;
+}
+
+#paginator {
+  float: right;
+}
+
+#wall_selection {
+  width: 200px;
+  padding:10px;
+  background-color: white;
+  border-radius:25px;
+}
+
+.wallreply {
+  padding: 15px;
+  width: 370px;
+  background-color: $grayLight;
+  position:relative;
+  z-index: 2;
+  border: 3px solid #000000;
+  border-radius:25px;
+}
+
+.comments {
+  list-style: none;
+  padding: 10px;
+  li {
+    background-color: white;
+    word-wrap:break-word;
+    overflow: auto;
+  }
+}
+
+/* findposts */
+
+.f_info {
+  position: absolute;
+  bottom: 5px;
+}
+.results {
+  list-style: none;
+  margin: 10px 0 0 0;
+  float: right;
+  width: 530px;
+  padding: 5px 15px;
+  background-color:white;
+  border:5px solid white;
+  border-radius:25px;
+
+  li {
+    padding: 10px 0;
+    height: 140px;
+    border-bottom: 1px solid #000000;
+    position: relative;
+  }
+}
+
+.c1 {
+  display: block;
+}
+
+.id {
+  display: block;
+  font-weight: bold;
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+.modal {
+  padding: 20px;
+}
+
+/* convos */
+
+.mbutton {
+  margin-left:20px;
+}
+
+#convos {
+  width: 100%;
+}
+
+#convos .column {
+  position: relative;
+  height: 600px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  width: 28%;
+  padding: 1%;
+  overflow-y:auto;
+  background-color: white;
+  border:5px solid white;
+  border-radius:25px;
+}
+
+#convos .inbox {
+  float: left;
+  border-width: 2px;
+  margin: 10px;
+}
+
+#convos .sentbox {
+  float: left;
+  border-width: 2px;
+  margin: 10px;
+}
+
+#convos .trashbox {
+  float: left;
+  border-width: 2px;
+  margin: 10px;
+}
+
+.c_info {
+  padding-bottom: 5px;
+  padding-top: 10px;
+  border-bottom: 1px solid #000000;
+}
+
+.m_info {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-bottom: 1px solid #000000;
+}
+
+.reply {
+  padding-top: 20px;
+}
+
+.unread {
+  font-weight: bold;
+}
+
+.notify {
+  font-weight: bold;
+  color: yellow;
+  font-size: 150%;
+}
+
+/* miscellaneous */
+
+.homepic {
+  background-color: white;
+  border:10px solid white;
+  border-radius:25px;
+}
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}

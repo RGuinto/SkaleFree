@@ -1,0 +1,24 @@
+<div data-role="collapsible">
+  <h3>Add Schedule</h3>
+  <%= form_for @findpost do |f| %> 
+    <%= f.hidden_field :c1, :value => "Spring 2014" %>
+    <div class="ui-grid-a">
+      <span class="ui-block-a">
+        <%= f.label 'Course 1' %>
+        <%= f.text_field :course1, :placeholder => "ENGL" %></span><span class="ui-block-b"><br><%= f.text_field :number1, :placeholder => "100"%></span>
+      <span class="ui-block-a">
+      <%= f.label "Course 2" %>
+      <%= f.text_field :course2, :placeholder => "PYSC"%></span><span class="ui-block-b"><br><%= f.text_field :number2, :placeholder => "101" %></span>
+      <span class="ui-block-a">
+      <%= f.label "Course 3" %>
+      <%= f.text_field :course3, :placeholder => "ECON" %></span><span class="ui-block-b"><br><%= f.text_field :number3, :placeholder => "102" %></span>
+      <span class="ui-block-a">
+      <%= f.label "Course 4" %>
+      <%= f.text_field :course4, :placeholder => "MATH" %></span><span class="ui-block-b"><br><%= f.text_field :number4, :placeholder => "103" %></span>
+      <span class="ui-block-a">
+      <%= f.label "Course 5" %>
+      <%= f.text_field :course5, :placeholder => "PHIL"%></span><span class="ui-block-b"><br><%= f.text_field :number5, :placeholder => "104" %></span>
+    </div>
+    <%= f.submit "Post" %>
+  <% end %>
+</div>

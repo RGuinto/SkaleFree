@@ -1,0 +1,57 @@
+<li>
+  <div class="id"><%= forumpost.forum %>
+    <div style="float:right;">
+      <% if signed_in? %>
+        <%= link_to "Like:", vote_forumpost_path(forumpost, type: "up"), method: "post", :remote => true %>
+      <% else %>
+        Likes:
+      <% end %>
+      <span class="post-<%=forumpost.id%>">
+        <%=forumpost.reputation_for(:votes).to_i %>
+      </span>
+    </div>
+  </div>
+  <div class="wall_post"><%= auto_link(simple_format(forumpost.content)) %></div>
+    <div class="f_info">
+      <span>
+        Posted <%= time_ago_in_words(forumpost.created_at) %> ago
+      </span>
+      <% if signed_in? %>
+        <% if current_user == forumpost.user %>
+        	<span>
+      		  by you | <%= link_to "Delete", forumpost, method: :delete,
+                                           data: { confirm: "Are you sure?" },
+                                           title: forumpost.content %>
+      		</span>
+        <% else %>
+        	<a href="<%= user_path(forumpost.user) %>">
+      		</a>
+      		<span>
+      		  by <%= link_to forumpost.user.name, forumpost.user %> | Rep: <%= forumpost.user.reputation_for(:votes).to_i %> | <%= link_to "Private Message", new_conversation_path( target: forumpost.user.name, reason: forumpost.forum ) %> 
+          </span>
+        <% end %>
+    </div>
+        <span style="float:right;">
+          <input type="button" class="btn" data-toggle="collapse" data-target="#<%= forumpost.id %>" value="<%= forumpost.comments.count %> comments">
+        </span>
+        <div id="<%= forumpost.id %>" class="collapse out">
+          <div class="wallreply">
+            <div class="comments">
+              <ul id="<%= forumpost.id %>_list">
+                <%= render 'comments/comment', :forumpost => forumpost %>
+              </ul>
+            </div>
+            <%= form_for :comment, :remote => true, :url => forumpost_comments_path(forumpost) do |f| %>
+              <div class="field">
+                  <%= f.label :content, "Write a comment" %>
+                  <%= f.text_area :content, :rows => "3" %>
+              </div>
+              <%= f.submit "Reply" %><span style="float:right;">
+              <input type="button" class="btn" data-toggle="collapse" data-target="#<%= forumpost.id %>" value="close"></span>
+            <% end %>
+          </div>
+        </div>
+    <% else %>
+      by <%= forumpost.user.name %> | Please <%= link_to "sign in", :new_user_session %>.
+    <% end %>
+</li>

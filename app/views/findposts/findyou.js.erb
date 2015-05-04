@@ -1,0 +1,2 @@
+$('.results').html("<%= escape_javascript(render @results) %>");
+$('#paginator').html('<%= escape_javascript(paginate(@results, :theme => 'twitter-bootstrap', :remote => true).to_s) %>');

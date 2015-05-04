@@ -1,0 +1,47 @@
+<% provide(:title, 'Class Schedules') %>
+<div class="row">
+  <aside class="span4">
+    <% if signed_in? %> 
+        <div class="sborder">
+          <%= render 'shared/user_info' %>
+        </div>
+    <% else %>
+      <div class="sborder">
+        <span style="font-size:140%;"><b>Meet new people!</b></span><br><br>
+        Please <%= link_to "sign up", :new_user_registration%> to post your class schedule, access profiles, and send messages.<br><br>
+        Or search for people below.<br>
+      </div>
+    <% end %>
+    <% if signed_in? %> 
+      <br>
+      <div class="sborder">
+        <b>Post your Class Schedule!</b><br><br>
+        <%= button_to "Add Schedule", popup_path, :remote => true, :class => "btn btn-success"%>
+      </div> 
+    <% end %>
+    <br>
+    <div class="sborder">
+      <b>Search Class Schedules</b><br><br>
+      <%= render 'shared/search_form' %>
+    </div>
+    <br>
+    <div class="sborder">
+      <p>
+        <b>Website Statistics</b><br>
+        Number of Users: <%= User.all.count %><br>
+        Number of Schedules: <%= Findpost.all.count %><br>
+        Number of Wallposts: <%= Forumpost.all.count %><br>
+        Number of Messages: <%= Message.all.count %><br>
+      </p>
+    </div>
+  </aside>
+  <div class="span8">
+    <h3 class="pHeadings">SFU Class Schedules</h3>
+    <ol class="results">
+      <%= render @results %>
+    </ol>
+  </div>
+  <div id="paginator">
+    <%= paginate @results, :theme => 'twitter-bootstrap', :remote => true %>
+  </div>
+</div>  

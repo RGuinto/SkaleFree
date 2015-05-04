@@ -1,0 +1,7 @@
+<% forumpost.comments.each do |com| %>
+  <li>
+    <div style="word-wrap:break-word;">
+    	<%= link_to com.user.name, com.user %> | <%= auto_link(com.content) %>
+    </div>
+  </li>
+<% end %>

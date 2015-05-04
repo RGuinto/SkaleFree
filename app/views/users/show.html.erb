@@ -1,0 +1,55 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+    <aside class="span4">
+      <div class="sborder">
+        <span style="font-size:200%"><b><%= @user.name %></b></span><br>
+        <% if @user == current_user %>
+        	<%= link_to "Edit Profile", edit_profile_path(@user) %>
+        <% end %>
+        <br><br>
+        <strong>Reputation: </strong><%= @user.reputation_for(:votes).to_i %>
+        <%= link_to 'Send Message', new_conversation_path(target: @user.name), class: "btn btn-large btn-primary", style: "float: right;" %>
+        <br>
+        <%= link_to "Up", vote_user_path(@user, type: "up"), method: "post" %>
+        | <%= link_to "Down", vote_user_path(@user, type: "down"), method: "post" %>
+      </div>
+      <br>
+      <div class="sborder">
+        <div id="traits">
+            <ul>
+           <%= render 'shared/profile' %>
+            </ul>
+        </div>
+        <br>
+        <div id="about">
+            <b>Additional Information:</b> <br><br>
+            <%= auto_link(simple_format(@profile.about)) %><br><br>
+        </div>
+      </div>
+    </aside>
+    <div class="span8">
+      <div style="float:right;">
+        <% if @user.findposts.any? %>
+          <h3 class="pHeadings">Class Schedules (<%=@user.findposts.count%>)</h3>
+          <ol class="results">
+            <%= render @findposts %>
+          </ol>
+        <% end %>
+        <div style="float:right;">
+            <%= paginate @findposts, :theme => 'twitter-bootstrap' %>
+        </div>
+      </div>
+      <div style="float:right;">
+        <% if @user.forumposts.any? %>
+          <br>
+          <h3 class="pHeadings">Wallposts (<%= @user.forumposts.count %>)</h3>
+          <ol class="results">
+            <%= render @forumposts %>
+          </ol>
+        <% end %>
+        <div id="paginator", style="float:right;">
+            <%= paginate @forumposts, :theme => 'twitter-bootstrap', :remote => true %>
+        </div>
+      </div>
+    </div>
+</div>

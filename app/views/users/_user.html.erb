@@ -1,0 +1,11 @@
+<li class="cfont">
+  <%= link_to user.name, user %>
+  | <%= user.email %>
+  | Active: <%= user.active %>
+  | <%= link_to "Toggle", active_user_path(user), method: :put %> | <input type="button" class="btn" data-toggle="collapse" data-target="#<%= user.name %>" value="Findposts">
+  <div id="<%= user.name %>" class="collapse out">
+  	<p>
+  		<%= user.findposts %>
+  	</p>
+  </div>
+</li>
